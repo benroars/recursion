@@ -38,4 +38,5 @@ var stringifyJSON = function(obj) {
         }
         return '{' + keyval.join(',') + '}';
     }
+    
 };
