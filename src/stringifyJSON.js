@@ -30,11 +30,10 @@ var stringifyJSON = function(obj) {
     else if({}.toString.call(obj) === '[object Object]'){
         var keyval = [];
         for(var key in obj){
-            if(key !== undefined && obj[key] !== undefined){
-                keyval.push(stringifyJSON(key) + ':' + stringifyJSON(obj[key]));
-            }else{
-                return '{}';
-            }   
+            if(typeof obj[key] === 'function' || obj[key] === undefined){
+                continue;
+            }
+            keyval.push(stringifyJSON(key) + ':' + stringifyJSON(obj[key]));  
         }
         return '{' + keyval.join(',') + '}';
     }
